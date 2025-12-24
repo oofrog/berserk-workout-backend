@@ -1,0 +1,30 @@
+package com.example.berserk_workout_backend.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class SetLog {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private SessionOrder sessionOrder;
+
+    @ManyToOne
+    @JoinColumn(name="excercise_id")
+    private Excercise excercise;
+
+    private Integer set_no;
+    private Integer weight;
+    private Integer reps;
+    private String complete;
+}
