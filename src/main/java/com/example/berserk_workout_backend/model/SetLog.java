@@ -17,13 +17,14 @@ public class SetLog {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name="session_order_id")
     private SessionOrder sessionOrder;
 
     @ManyToOne
     @JoinColumn(name="excercise_id")
     private Excercise excercise;
 
-    private Integer set_no;
+    private Integer setNo;
     private Integer weight;
     private Integer reps;
     private String complete;

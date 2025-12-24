@@ -7,7 +7,10 @@ import lombok.Data;
 @Builder
 public class SetLogDto {
     private Long id;
-    private Long weight;
-    private Long reps;
+    private Long sessionOrderId;
+    private Long excerciseId;
+    private Integer setNo;
+    private Integer weight;
+    private Integer reps;
     private String complete;
 }

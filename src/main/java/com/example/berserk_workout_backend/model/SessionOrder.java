@@ -20,7 +20,7 @@ public class SessionOrder {
     @JoinColumn(name="session_id")
     private Session session;
 
-    private Integer excercise_no;
+    private Integer excerciseNo;
 
     @ManyToOne
     @JoinColumn(name="excercise_id")
