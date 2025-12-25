@@ -8,7 +8,6 @@ import lombok.Data;
 public class SetLogDto {
     private Long id;
     private Long sessionOrderId;
-    private Long excerciseId;
     private Integer setNo;
     private Integer weight;
     private Integer reps;

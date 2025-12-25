@@ -19,6 +19,4 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    @CreatedDate
-    private Date createdAt;
 }

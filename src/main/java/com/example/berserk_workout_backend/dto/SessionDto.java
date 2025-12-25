@@ -10,5 +10,4 @@ import java.util.Date;
 public class SessionDto {
     private Long id;
     private String title;
-    private Date createdAt;
 }

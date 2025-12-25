@@ -20,10 +20,6 @@ public class SetLog {
     @JoinColumn(name="session_order_id")
     private SessionOrder sessionOrder;
 
-    @ManyToOne
-    @JoinColumn(name="excercise_id")
-    private Excercise excercise;
-
     private Integer setNo;
     private Integer weight;
     private Integer reps;
