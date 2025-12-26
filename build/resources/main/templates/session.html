@@ -6,13 +6,10 @@
 </head>
 <body>
 <table>
-    <thead>
-
-    </thead>
     <tbody>
     <tr th:each="session1:${sessions}">
         <td th:text="${session1.id}">id</td>
-        <td th:text="${session1.title}">title</td>
+        <td><a th:text="${session1.title}" th:href="@{/session/{id}(id=${session1.id})}">title</a></td>
     </tr>
     </tbody>
 </table>

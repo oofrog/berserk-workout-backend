@@ -23,4 +23,8 @@ public class SessionService {
         List<Session> sessions = sessionRepository.findAll();
         return sessions.stream().map(this::mapToSessionDto).toList();
     }
+
+    public SessionDto findById(Long id) {
+        return sessionRepository.findById(id).map(this::mapToSessionDto).orElseThrow();
+    }
 }

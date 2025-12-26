@@ -16,14 +16,14 @@ public class SessionOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="session_id")
     private Session session;
 
-    private Integer excerciseNo;
+    private Integer exerciseNo;
 
-    @ManyToOne
-    @JoinColumn(name="excercise_id")
-    private Excercise excercise;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="exercise_id")
+    private Exercise exercise;
 
 }

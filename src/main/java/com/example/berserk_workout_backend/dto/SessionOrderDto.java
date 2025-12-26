@@ -8,6 +8,8 @@ import lombok.Data;
 public class SessionOrderDto {
     private Long id;
     private Long sessionId;
-    private Integer excerciseId;
-    private Integer excerciseNo;
+    private String sessionTitle;
+    private Long exerciseId;
+    private String exerciseName;
+    private Integer exerciseNo;
 }
