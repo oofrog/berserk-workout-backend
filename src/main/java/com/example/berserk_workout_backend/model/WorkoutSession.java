@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Session {
+public class WorkoutSession {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

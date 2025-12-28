@@ -5,11 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+    <h1 th:text="${workoutSession.title}"></h1>
     <table>
         <tbody>
-        <tr th:each="order:${sessionOrders}">
-            <td th:text="${order.exerciseNo}">exerciseNo</td>
-            <td th:text="${order.exerciseName}">exerciseName</td>
+        <tr th:each="sessionOrder:${sessionOrders}">
+            <td th:text="${sessionOrder.exerciseNo}">exerciseNo</td>
+            <td th:text="${sessionOrder.exerciseName}">exerciseName</td>
         </tr>
         </tbody>
     </table>

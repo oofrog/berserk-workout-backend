@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SessionOrderRepository extends JpaRepository<SessionOrder, Long> {
-    List<SessionOrder> findAllBySessionId(Long sessionId);
+    List<SessionOrder> findAllByWorkoutSessionId(Long workoutSessionId);
 }

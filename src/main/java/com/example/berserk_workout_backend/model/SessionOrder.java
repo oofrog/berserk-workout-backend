@@ -17,8 +17,8 @@ public class SessionOrder {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="session_id")
-    private Session session;
+    @JoinColumn(name="workout_session_id")
+    private WorkoutSession workoutSession;
 
     private Integer exerciseNo;
 
