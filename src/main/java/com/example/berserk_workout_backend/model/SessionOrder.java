@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -25,5 +27,9 @@ public class SessionOrder {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="exercise_id")
     private Exercise exercise;
+
+    @OneToMany(mappedBy = "sessionOrder")
+    private List<SetLog> setLogs;
+
 
 }

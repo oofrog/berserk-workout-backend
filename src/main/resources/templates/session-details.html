@@ -6,14 +6,26 @@
 </head>
 <body>
     <h1 th:text="${workoutSession.title}"></h1>
-    <table>
-        <tbody>
-        <tr th:each="sessionOrder:${sessionOrders}">
-            <td th:text="${sessionOrder.exerciseNo}">exerciseNo</td>
-            <td th:text="${sessionOrder.exerciseName}">exerciseName</td>
-        </tr>
-        </tbody>
-    </table>
+    <div th:each="sessionOrder:${sessionOrders}">
+        <h2 th:text="|${sessionOrder.exerciseNo} ${sessionOrder.exerciseName}|"></h2>
+        <table>
+            <thead>
+            <tr>
+                <th>weight</th>
+                <th>reps</th>
+                <th>complete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="setLog:${sessionOrder.setLogs}">
+                <td th:text="${setLog.weight}"></td>
+                <td th:text="${setLog.reps}"></td>
+                <td th:text="${setLog.complete}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 
 </body>
 </html>
