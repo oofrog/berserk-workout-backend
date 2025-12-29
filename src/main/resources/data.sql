@@ -12,4 +12,4 @@ INSERT INTO session_order(workout_session_id,exercise_no,exercise_id) VALUES(1,3
 
 INSERT INTO set_log(session_order_id,set_no,weight,reps,complete) VALUES(1,1,40,10,'가벼움');
 INSERT INTO set_log(session_order_id,set_no,weight,reps,complete) VALUES(1,2,40,10,'힒듬');
-INSERT INTO set_log(session_order_id,set_no,weight,reps,complete) VALUES(1,3,40,9,'실패');
+INSERT INTO set_log(session_order_id,set_no,weight,reps,complete) VALUES(2,3,40,9,'실패');

@@ -5,13 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <tbody>
-    <tr th:each="workoutSession:${workoutSessions}">
-        <td th:text="${workoutSession.id}">id</td>
-        <td><a th:text="${workoutSession.title}" th:href="@{/session/{id}(id=${workoutSession.id})}">title</a></td>
-    </tr>
-    </tbody>
-</table>
+    <div th:each="workoutSession:${workoutSessions}">
+        <h1><a th:href="@{session/{id}(id=${workoutSession.id})}" th:text="${workoutSession.title}"></a></h1>
+    </div>
+
+    <div>
+        <h1><a th:href="@{session/exercise}">루틴 만들기</a></h1>
+    </div>
 </body>
 </html>

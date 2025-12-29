@@ -27,4 +27,12 @@ public class WorkoutSessionService {
     public WorkoutSessionDto findById(Long id) {
         return workoutSessionRepository.findById(id).map(this::mapToSessionDto).orElseThrow();
     }
+
+    public WorkoutSessionDto create() {
+        WorkoutSession workoutSession = WorkoutSession.builder()
+                .title("새 루틴").build();
+
+        workoutSessionRepository.save(workoutSession);
+        return mapToSessionDto(workoutSession);
+    }
 }

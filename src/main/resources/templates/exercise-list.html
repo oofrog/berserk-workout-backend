@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="exercise:${exerciseList}">
+    <h2 th:text="${exercise.name}"></h2>
+</div>
+<form th:if="${type=='new'}">
+    <button>루틴 만들기</button>
+</form>
+<form th:if="${type=='patch'}">
+    <button>운동 추가하기</button>
+</form>
+</body>
+</html>

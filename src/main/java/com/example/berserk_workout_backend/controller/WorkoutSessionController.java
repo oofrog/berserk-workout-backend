@@ -1,6 +1,7 @@
 package com.example.berserk_workout_backend.controller;
 
 import com.example.berserk_workout_backend.dto.WorkoutSessionDto;
+import com.example.berserk_workout_backend.service.ExerciseService;
 import com.example.berserk_workout_backend.service.SessionOrderService;
 import com.example.berserk_workout_backend.service.WorkoutSessionService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class WorkoutSessionController {
     private final WorkoutSessionService workoutSessionService;
     private final SessionOrderService sessionOrderService;
+    private final ExerciseService exerciseService;
 
     @GetMapping
     public String getWorkOutSession(Model model) {
@@ -34,4 +37,20 @@ public class WorkoutSessionController {
         model.addAttribute("sessionOrders", sessionOrderService.findAllBySessionId(id));
         return "session-details";
     }
+
+    @GetMapping("/exercise")
+    public String getExercise(@RequestParam(name="id",required = false) Long id, Model model) {
+
+        model.addAttribute("exerciseList",exerciseService.findAll());
+
+        if (id == null) {
+            model.addAttribute("type", "new");
+        } else{
+            model.addAttribute("type", "patch");
+        }
+
+        return "exercise-list";
+    }
+
+
 }
