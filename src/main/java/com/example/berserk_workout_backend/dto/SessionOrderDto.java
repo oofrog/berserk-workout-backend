@@ -9,8 +9,8 @@ import java.util.List;
 @Builder
 public class SessionOrderDto {
     private Long id;
-    private Long sessionId;
-    private String sessionTitle;
+    private Long workoutSessionId;
+    private String workoutSessionTitle;
     private Long exerciseId;
     private String exerciseName;
     private Integer exerciseNo;

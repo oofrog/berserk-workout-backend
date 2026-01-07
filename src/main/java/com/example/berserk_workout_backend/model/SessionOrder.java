@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,7 +30,7 @@ public class SessionOrder {
     private Exercise exercise;
 
     @OneToMany(mappedBy = "sessionOrder")
-    private List<SetLog> setLogs;
+    private List<SetLog> setLogs = new ArrayList<>();
 
 
 }

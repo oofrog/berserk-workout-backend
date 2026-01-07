@@ -5,14 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<div th:each="exercise:${exerciseList}">
-    <h2 th:text="${exercise.name}"></h2>
-</div>
-<form th:if="${type=='new'}">
-    <button>루틴 만들기</button>
-</form>
-<form th:if="${type=='patch'}">
-    <button>운동 추가하기</button>
+<form th:action="@{exercise}" th:method="POST">
+    <div th:each="exercise:${exerciseList}">
+        <label th:for="|ex-${exercise.id}|" th:text="${exercise.name}"></label>
+        <input type="checkbox"
+               name="exerciseIds"
+               th:id="|ex-${exercise.id}|"
+               th:value="${exercise.id}">
+    </div>
+    <button th:if="${type=='new'}">루틴 생성</button>
+    <button th:if="${type=='patch'}">루틴 수정</button>
 </form>
 </body>
 </html>

@@ -1,17 +1,16 @@
 package com.example.berserk_workout_backend.controller;
 
 import com.example.berserk_workout_backend.dto.WorkoutSessionDto;
+import com.example.berserk_workout_backend.model.WorkoutSession;
 import com.example.berserk_workout_backend.service.ExerciseService;
 import com.example.berserk_workout_backend.service.SessionOrderService;
 import com.example.berserk_workout_backend.service.WorkoutSessionService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,6 +49,15 @@ public class WorkoutSessionController {
         }
 
         return "exercise-list";
+    }
+
+    @PostMapping("/exercise")
+    public String postWorkoutSession(@RequestParam(required = false) List<Long> exerciseIds){
+
+        WorkoutSessionDto workoutSessionDto = workoutSessionService.create(exerciseIds);
+        Long workoutSessionId = workoutSessionDto.getId();
+
+        return "redirect:/session/"+workoutSessionId;
     }
 
 
