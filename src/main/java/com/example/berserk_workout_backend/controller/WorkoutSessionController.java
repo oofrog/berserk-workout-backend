@@ -37,8 +37,8 @@ public class WorkoutSessionController {
         return "session-details";
     }
 
-    @GetMapping("/exercise")
-    public String getExercise(@RequestParam(name="id",required = false) Long id, Model model) {
+    @GetMapping("/add")
+    public String getExerciseList(@RequestParam(name="id",required = false) Long id, Model model) {
 
         model.addAttribute("exerciseList",exerciseService.findAll());
 
@@ -48,17 +48,16 @@ public class WorkoutSessionController {
             model.addAttribute("type", "patch");
         }
 
-        return "exercise-list";
+        return "session-add";
     }
 
-    @PostMapping("/exercise")
-    public String postWorkoutSession(@RequestParam(required = false) List<Long> exerciseIds){
+    @PostMapping("/add")
+    public String addWorkoutSession(@RequestParam(required = false) List<Long> exerciseIds){
 
         WorkoutSessionDto workoutSessionDto = workoutSessionService.create(exerciseIds);
         Long workoutSessionId = workoutSessionDto.getId();
 
         return "redirect:/session/"+workoutSessionId;
     }
-
 
 }
