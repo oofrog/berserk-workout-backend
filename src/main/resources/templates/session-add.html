@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/exercise}" th:method="POST">
+<form th:action="@{add}" th:method="POST">
     <div th:each="exercise:${exerciseList}">
         <label th:for="|ex-${exercise.id}|" th:text="${exercise.name}"></label>
         <input type="checkbox"

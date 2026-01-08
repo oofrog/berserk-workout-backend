@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -51,6 +52,10 @@ public class SessionOrderService {
                 .exerciseNo(sessionOrder.getExerciseNo())
                 .setLogs(setLogDtoList)
                 .build();
+    }
+
+    public SessionOrderDto findById(Long id) {
+        return sessionOrderRepository.findById(id).map(this::mapToSessionOrderDto).orElseThrow();
     }
 
     public List<SessionOrderDto> findAllBySessionId(Long sessionId) {

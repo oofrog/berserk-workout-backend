@@ -12,4 +12,6 @@ public interface SetLogRepository extends JpaRepository<SetLog, Long> {
 
     @Query("SELECT MAX(s.setNo) FROM SetLog s WHERE s.sessionOrder = :sessionOrder")
     Integer findMaxSetNoBySessionOrder(@Param("sessionOrder") SessionOrder sessionOrder);
+
+    SetLog findBySessionOrderAndSetNo(SessionOrder sessionOrder,Integer setNo);
 }

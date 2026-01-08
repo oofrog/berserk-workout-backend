@@ -48,4 +48,33 @@ public class SetLogService {
         return setLogs.stream().map(this::mapToSetLogDto).toList();
     }
 
+    public SetLogDto create(Long sessionOrderId){
+
+        SessionOrder sessionOrder = sessionOrderRepository.findById(sessionOrderId).orElseThrow();
+
+        Integer maxSetNo = setLogRepository.findMaxSetNoBySessionOrder(sessionOrder);
+        int nextSetNo = (maxSetNo == null) ? 1 : maxSetNo + 1;
+        int weight = 10;
+        int reps = 10;
+
+        if (maxSetNo != null) {
+            SetLog priorSet = setLogRepository.findBySessionOrderAndSetNo(sessionOrder, maxSetNo);
+            if (priorSet != null) {
+                weight = priorSet.getWeight();
+                reps = priorSet.getReps();
+            }
+        }
+
+        SetLog setLog = SetLog.builder()
+                .sessionOrder(sessionOrder)
+                .setNo(nextSetNo)
+                .weight(weight)
+                .reps(reps)
+                .complete("N")
+                .build();
+
+        setLogRepository.save(setLog);
+        return mapToSetLogDto(setLog);
+    }
+
 }

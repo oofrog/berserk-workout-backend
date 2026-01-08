@@ -7,24 +7,19 @@
 <body>
     <h1 th:text="${workoutSession.title}"></h1>
     <div th:each="sessionOrder:${sessionOrders}">
-        <h2 th:text="|${sessionOrder.exerciseNo} ${sessionOrder.exerciseName}|"></h2>
-        <table>
-            <thead>
-            <tr>
-                <th>weight</th>
-                <th>reps</th>
-                <th>complete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="setLog:${sessionOrder.setLogs}">
-                <td th:text="${setLog.weight}"></td>
-                <td th:text="${setLog.reps}"></td>
-                <td th:text="${setLog.complete}"></td>
-            </tr>
-            </tbody>
-        </table>
+        <h2 th:text="${sessionOrder.exerciseName}"></h2>
+        <form>
+            <div th:each="setLog:${sessionOrder.setLogs}">
+                <input type="number" th:value="${setLog.weight}">
+                <input type="number" th:value="${setLog.reps}">
+                <input type="text" th:value="${setLog.complete}">
+            </div>
 
+        </form>
+        <form th:action="@{/set-log/add}" th:method="post">
+            <input type="hidden" name="sessionOrderId" th:value="${sessionOrder.id}">
+            <button>세트 추가</button>
+        </form>
     </div>
 
 </body>
