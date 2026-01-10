@@ -7,19 +7,8 @@
 <body>
     <h1 th:text="${workoutSession.title}"></h1>
     <div th:each="sessionOrder:${sessionOrders}">
-        <h2 th:text="${sessionOrder.exerciseName}"></h2>
-        <form>
-            <div th:each="setLog:${sessionOrder.setLogs}">
-                <input type="number" th:value="${setLog.weight}">
-                <input type="number" th:value="${setLog.reps}">
-                <input type="text" th:value="${setLog.complete}">
-            </div>
-
-        </form>
-        <form th:action="@{/set-log/add}" th:method="post">
-            <input type="hidden" name="sessionOrderId" th:value="${sessionOrder.id}">
-            <button>세트 추가</button>
-        </form>
+        <h2><a th:text="${sessionOrder.exerciseName}"
+               th:href="@{/session/{id}/session-order(exerciseNo=${sessionOrder.exerciseNo},id=${workoutSession.id})}"></a></h2>
     </div>
 
 </body>

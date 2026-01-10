@@ -77,4 +77,15 @@ public class SetLogService {
         return mapToSetLogDto(setLog);
     }
 
+    public void deleteLastSet(Long sessionOrderId){
+        SessionOrder sessionOrder = sessionOrderRepository.findById(sessionOrderId).orElseThrow();
+
+        Integer maxSetNo = setLogRepository.findMaxSetNoBySessionOrder(sessionOrder);
+
+        if (maxSetNo != null) {
+            SetLog setLog = setLogRepository.findBySessionOrderAndSetNo(sessionOrder, maxSetNo);
+            setLogRepository.delete(setLog);
+        }
+    }
+
 }

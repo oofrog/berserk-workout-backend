@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2 th:text="${sessionOrder.exerciseName}"></h2>
+    <div th:each="setLog:${sessionOrder.setLogs}">
+        <form>
+            <input type="number" th:value="${setLog.weight}">
+            <input type="number" th:value="${setLog.reps}">
+            <input type="text" th:value="${setLog.complete}">
+        </form>
+
+    </div>
+    <div>
+        <form th:action="@{/set-log/add}" th:method="post">
+            <input type="hidden" name="sessionOrderId" th:value="${sessionOrder.id}">
+            <button>세트 추가</button>
+        </form>
+        <form th:action="@{/set-log/delete}" th:method="post">
+            <input type="hidden" name="sessionOrderId" th:value="${sessionOrder.id}">
+            <button>세트 삭제</button>
+        </form>
+    </div>
+    <div>
+        <a th:if="${existNext}"
+                th:href="@{/session/{id}/session-order(id=${sessionOrder.workoutSessionId},exerciseNo=${sessionOrder.exerciseNo+1})}">
+            다음운동
+        </a>
+        <span th:if="${!existNext}">운동 완료</span>
+    </div>
+</body>
+</html>

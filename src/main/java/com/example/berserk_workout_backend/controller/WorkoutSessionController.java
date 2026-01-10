@@ -1,5 +1,6 @@
 package com.example.berserk_workout_backend.controller;
 
+import com.example.berserk_workout_backend.dto.SessionOrderDto;
 import com.example.berserk_workout_backend.dto.WorkoutSessionDto;
 import com.example.berserk_workout_backend.model.WorkoutSession;
 import com.example.berserk_workout_backend.service.ExerciseService;
@@ -37,6 +38,21 @@ public class WorkoutSessionController {
         return "session-details";
     }
 
+    @GetMapping("/{id}/session-order")
+    public String getSessionOrderBySessionId(@PathVariable("id") Long workoutSessionId,
+                                             @RequestParam(value = "exerciseNo",defaultValue = "1") Integer exerciseNo,
+                                             Model model) {
+
+        SessionOrderDto sessionOrder = sessionOrderService.findByWorkoutSessionIdAndExerciseNo(workoutSessionId, exerciseNo);
+        Boolean existNext = sessionOrderService.existNext(workoutSessionId,exerciseNo);
+
+        model.addAttribute("sessionOrder", sessionOrder);
+        model.addAttribute("existNext",existNext);
+
+        return "session-order-details";
+    }
+
+
     @GetMapping("/add")
     public String getExerciseList(@RequestParam(name="id",required = false) Long id, Model model) {
 
@@ -59,5 +75,7 @@ public class WorkoutSessionController {
 
         return "redirect:/session/"+workoutSessionId;
     }
+
+
 
 }

@@ -80,4 +80,22 @@ public class SessionOrderService {
         return mapToSessionOrderDto(sessionOrder);
     }
 
+    public SessionOrderDto findByWorkoutSessionIdAndExerciseNo(Long workoutSessionId, Integer exerciseNo) {
+        WorkoutSession workoutSession = workoutSessionRepository.findById(workoutSessionId).orElseThrow();
+
+        SessionOrder sessionOrder = sessionOrderRepository.findByWorkoutSessionAndExerciseNo(workoutSession,exerciseNo);
+
+        return mapToSessionOrderDto(sessionOrder);
+    }
+
+    public Boolean existNext(Long workoutSessionId, Integer exerciseNo) {
+        WorkoutSession workoutSession = workoutSessionRepository.findById(workoutSessionId).orElseThrow();
+        Integer maxExerciseNo = sessionOrderRepository.findMaxExerciseNoByWorkoutSession(workoutSession);
+
+        if (maxExerciseNo==null || exerciseNo.equals(maxExerciseNo)) {
+            return false;
+        } else  {
+            return true;
+        }
+    }
 }

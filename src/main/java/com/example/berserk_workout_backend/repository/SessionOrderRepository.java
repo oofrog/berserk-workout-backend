@@ -22,4 +22,6 @@ public interface SessionOrderRepository extends JpaRepository<SessionOrder, Long
 
     @Query("SELECT MAX(s.exerciseNo) FROM SessionOrder s WHERE s.workoutSession = :workoutSession")
     Integer findMaxExerciseNoByWorkoutSession(WorkoutSession workoutSession);
+
+    SessionOrder findByWorkoutSessionAndExerciseNo(WorkoutSession workoutSession, Integer exerciseNo);
 }

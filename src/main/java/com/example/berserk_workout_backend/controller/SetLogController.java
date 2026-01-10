@@ -6,10 +6,8 @@ import com.example.berserk_workout_backend.service.SetLogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("set-log")
@@ -21,10 +19,22 @@ public class SetLogController {
     private final SetLogService setLogService;
 
     @PostMapping("/add")
-    public String addSet(@RequestParam("sessionOrderId") Long sessionOrderId){
+    public String addSet(@RequestParam("sessionOrderId") Long sessionOrderId, RedirectAttributes redirectAttributes) {
         SessionOrderDto sessionOrderDto = sessionOrderService.findById(sessionOrderId);
         setLogService.create(sessionOrderId);
 
-        return "redirect:/session/"+sessionOrderDto.getWorkoutSessionId();
+        redirectAttributes.addAttribute("exerciseNo", sessionOrderDto.getExerciseNo());
+
+        return "redirect:/session/"+sessionOrderDto.getWorkoutSessionId()+"/session-order";
     }
+
+    @PostMapping("/delete")
+    public String deleteLastSet(@RequestParam("sessionOrderId") Long sessionOrderId, RedirectAttributes redirectAttributes) {
+        SessionOrderDto sessionOrderDto = sessionOrderService.findById(sessionOrderId);
+        setLogService.deleteLastSet(sessionOrderId);
+        redirectAttributes.addAttribute("exerciseNo", sessionOrderDto.getExerciseNo());
+
+        return "redirect:/session/"+sessionOrderDto.getWorkoutSessionId()+"/session-order";
+    }
+
 }
