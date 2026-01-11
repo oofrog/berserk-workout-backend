@@ -1,6 +1,7 @@
 package com.example.berserk_workout_backend.service;
 
 import com.example.berserk_workout_backend.dto.SetLogDto;
+import com.example.berserk_workout_backend.dto.SetLogForm;
 import com.example.berserk_workout_backend.model.SessionOrder;
 import com.example.berserk_workout_backend.model.SetLog;
 import com.example.berserk_workout_backend.repository.SessionOrderRepository;
@@ -86,6 +87,16 @@ public class SetLogService {
             SetLog setLog = setLogRepository.findBySessionOrderAndSetNo(sessionOrder, maxSetNo);
             setLogRepository.delete(setLog);
         }
+    }
+
+    public SetLogDto update(SetLogForm setLogForm){
+        SetLog setLog = setLogRepository.findById(setLogForm.getId()).orElseThrow();
+        setLog.setWeight(setLogForm.getWeight());
+        setLog.setReps(setLogForm.getReps());
+        setLog.setComplete(setLogForm.getComplete());
+
+        setLogRepository.save(setLog);
+        return mapToSetLogDto(setLog);
     }
 
 }
