@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::section})}">
 <body>
+<section>
     <h1 th:text="${workoutSession.title}"></h1>
     <div th:each="sessionOrder:${sessionOrders}">
         <h2><a th:text="${sessionOrder.exerciseName}"
                th:href="@{/session/{id}/session-order(exerciseNo=${sessionOrder.exerciseNo},id=${workoutSession.id})}"></a></h2>
     </div>
-
+</section>
 </body>
 </html>

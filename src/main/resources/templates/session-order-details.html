@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::section})}">
 <body>
+<section>
     <h2 th:text="${sessionOrder.exerciseName}"></h2>
     <div th:each="setLog:${sessionOrder.setLogs}">
         <form th:action="@{/set-log/save}" th:method="post">
@@ -35,5 +33,6 @@
         </a>
         <span th:if="${!existNext}">운동 완료</span>
     </div>
+</section>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::section})}">
+
 <body>
+<section>
     <div th:each="workoutSession:${workoutSessions}">
         <h1><a th:href="@{session/{id}(id=${workoutSession.id})}" th:text="${workoutSession.title}"></a></h1>
     </div>
@@ -12,5 +12,6 @@
     <div>
         <h1><a th:href="@{session/add}">루틴 만들기</a></h1>
     </div>
+</section>
 </body>
 </html>

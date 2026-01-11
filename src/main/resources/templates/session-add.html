@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::section})}">
+
 <body>
+<section>
 <form th:action="@{add}" th:method="POST">
     <div th:each="exercise:${exerciseList}">
         <label th:for="|ex-${exercise.id}|" th:text="${exercise.name}"></label>
@@ -16,5 +15,6 @@
     <button th:if="${type=='new'}">루틴 생성</button>
     <button th:if="${type=='patch'}">루틴 수정</button>
 </form>
+</section>
 </body>
 </html>
