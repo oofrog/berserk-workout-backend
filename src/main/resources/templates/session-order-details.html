@@ -3,7 +3,7 @@
       th:replace="~{base-layout::layout(~{::section})}">
 <body>
 <section>
-    <h2 th:text="${sessionOrder.exerciseName}"></h2>
+    <span th:text="${sessionOrder.exerciseName}"></span>
     <div th:each="setLog:${sessionOrder.setLogs}">
         <form th:action="@{/set-log/save}" th:method="post">
             <label th:for="|set-${setLog.setNo}|" th:text="${setLog.setNo}"></label>
