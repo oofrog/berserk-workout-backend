@@ -1,0 +1,166 @@
+/* 1. 상단 헤더 */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.header-left i { margin-left: 5px; font-size: 0.8rem; }
+
+.header-right i {
+    margin-left: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* 2. 퀵 메뉴 */
+.quick-menu {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-item span {
+    font-size: 0.8rem;
+    color: #b0b0b0;
+}
+
+.icon-box {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+/* 아이콘 색상 효과 (그라데이션 흉내) */
+.red-icon { color: #ff5252; text-shadow: 0 0 10px rgba(255, 82, 82, 0.5); }
+.green-icon { color: #b39ddb; text-shadow: 0 0 10px rgba(179, 157, 219, 0.5); } /* 로봇 색상 비슷하게 */
+.yellow-icon { color: #ffd740; text-shadow: 0 0 10px rgba(255, 215, 64, 0.5); }
+
+/* 3. 내 루틴 섹션 */
+.routine-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.filters span {
+    font-size: 0.8rem;
+    color: #888;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.view-toggle {
+    background-color: #2c2c2e;
+    border-radius: 8px;
+    padding: 2px;
+    display: flex;
+}
+
+.view-toggle button {
+    background: none;
+    border: none;
+    color: #666;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.view-toggle button.active {
+    color: #ff5252; /* 활성화된 아이콘 색상 */
+}
+
+/* 4. 카드 리스트 */
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card {
+    background-color: #1c1c1e;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    color: #ff5252;
+    margin-right: 15px;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.card-content .tags {
+    font-size: 0.8rem;
+    color: #4caf50; /* 초록색 태그 */
+    margin-bottom: 2px;
+}
+
+.card-content .time {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.card-menu {
+    color: #666;
+    cursor: pointer;
+}
+
+/* 5. 하단 액션 버튼 */
+.bottom-actions {
+    position: fixed;
+    bottom: 80px; /* 네비게이션 바 높이 위 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 450px;
+    padding: 0 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.bottom-actions button {
+    flex: 1;
+    padding: 16px;
+    border-radius: 16px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}

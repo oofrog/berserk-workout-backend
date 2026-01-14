@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{base-layout::layout(~{::section})}">
+      th:replace="~{base-layout::layout(~{::.app-container})}">
 <body>
-<section>
-    <h1 th:text="${workoutSession.title}"></h1>
-    <div th:each="sessionOrder:${sessionOrders}">
-        <h2><a th:text="${sessionOrder.exerciseName}"
-               th:href="@{/session/{id}/session-order(exerciseNo=${sessionOrder.exerciseNo},id=${workoutSession.id})}"></a></h2>
+<div class="app-container">
+    <header class="detail-header">
+        <i class="fa-solid fa-chevron-left back-btn"></i>
+        <h1 th:text="${workoutSession.title}">초심자 등+어깨</h1>
+        <i class="fa-solid fa-ellipsis menu-btn"></i>
+    </header>
+
+    <section class="anatomy-area">
+        <img th:src="@{/img/guts2.jpg}" alt="근육 분석 이미지" class="anatomy-img">
+    </section>
+
+    <div class="exercise-list">
+        <div class="exercise-item" th:each="sessionOrder:${sessionOrders}">
+            <div class="ex-thumb">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <a class="a-to-div ex-info" th:href="@{/session/{id}/session-order(exerciseNo=${sessionOrder.exerciseNo},id=${workoutSession.id})}">
+                <h3 th:text="${sessionOrder.exerciseName}">케이블 시티드 로우</h3>
+                <p>타겟 부위</p>
+            </a>
+            <i class="fa-solid fa-ellipsis ex-menu"></i>
+        </div>
     </div>
-</section>
+
+    <div class="bottom-actions detail-actions">
+        <button class="btn-primary">
+            <i class="fa-solid fa-play"></i> 시작
+        </button>
+        <button class="btn-secondary">
+            <i class="fa-solid fa-plus"></i> 운동 추가
+        </button>
+    </div>
+
+    <div class="spacer"></div>
+</div>
+<!--<section>-->
+<!--    -->
+<!--    <h1 th:text="${workoutSession.title}"></h1>-->
+<!--    <div th:each="sessionOrder:${sessionOrders}">-->
+<!--        <h2><a th:text="${sessionOrder.exerciseName}"-->
+<!--               th:href="@{/session/{id}/session-order(exerciseNo=${sessionOrder.exerciseNo},id=${workoutSession.id})}"></a></h2>-->
+<!--    </div>-->
+<!--</section>-->
 </body>
 </html>

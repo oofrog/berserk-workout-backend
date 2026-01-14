@@ -1,0 +1,9 @@
+.btn-primary {
+    background-color: #942b23; /* 어두운 붉은색/갈색 */
+    color: white;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #942b23;
+}

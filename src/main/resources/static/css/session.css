@@ -1,0 +1,107 @@
+/* 1. 상세 페이지 배경 덮어쓰기 */
+/* 홈 화면(#121212)보다 더 어두운 검정색 배경 적용 */
+body.detail-body {
+    background-color: #000000;
+}
+
+/* 2. 상세 헤더 스타일 */
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 20px 0;
+    color: white;
+}
+
+.detail-header h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.back-btn, .menu-btn {
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 24px; /* 터치 영역 및 정렬 확보 */
+}
+
+/* 3. 해부도 영역 */
+/* 해부도 영역 (컨테이너) */
+.anatomy-area {
+    width: 100%;
+    height: 350px; /* 원본 화면과 비슷한 높이 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 이미지 스타일 */
+.anatomy-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    /* contain: 이미지 비율 유지하며 전체 다 보여주기 (추천) */
+    /* cover: 영역을 가득 채우되 짤릴 수 있음 */
+    object-fit: cover;
+}
+
+/* 4. 운동 리스트 스타일 */
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    /* 카드가 아니라 투명 배경이므로 별도 배경색 없음 */
+}
+
+.ex-thumb {
+    width: 64px;
+    height: 64px;
+    background-color: #1c1c1e; /* 썸네일만 카드 배경색 사용 */
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.ex-thumb i {
+    font-size: 1.5rem;
+    color: #888;
+}
+
+.ex-info {
+    flex: 1;
+}
+
+.ex-info h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.ex-info p {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.ex-menu {
+    color: #666;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* 5. 하단 버튼 위치 재조정 */
+/* 기존 .bottom-actions는 nav bar(80px) 위에 있었음.
+   상세 페이지는 nav bar가 없으므로 더 아래로 내려야 함. */
+.bottom-actions.detail-actions {
+    bottom: 40px; /* 아이폰 하단 바 고려 */
+}
