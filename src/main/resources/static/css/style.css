@@ -3,6 +3,7 @@
 @import "button.css";
 @import "home.css";
 @import "session.css";
+@import "add-session.css";
 
 /* 기본 초기화 및 폰트 설정 */
 * {
