@@ -1,0 +1,12 @@
+  .exercise-checkbox {
+    display: none;
+  }
+
+  .exercise-check{
+    opacity: 0;
+    font-size: 2rem;
+  }
+
+  .exercise-checkbox:checked + .exercise-check{
+    opacity: 1;
+  }
