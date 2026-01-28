@@ -1,0 +1,63 @@
+.exercise-list{
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.exercise{
+    width: 340px;
+    height:75px;
+    display: flex;
+    align-items: center;
+    justify-content:baseline;
+}
+
+.exercise-icon{
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.exercise-content{
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.exercise-label{
+    width: 90%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.add-exercise{
+    font-size: 1.1rem;
+}
+
+.exercise-btn-wrapper{
+    position: absolute;
+    width:340px;
+    bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exercise-btn{
+    background-color: #EDEDED;
+    height: 70px;
+    width: 300px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1A1A1A;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}

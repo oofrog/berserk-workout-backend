@@ -1,5 +1,8 @@
 @import "reset.css";
+@import "routine.css";
+@import "exercise.css";
 @import "check-box.css";
+@import "update.css";
 
 * {
     margin: 0;
@@ -28,66 +31,6 @@ body {
     align-items: center;
 }
 
-.routine-list{
-    background-color: #2c2c2c;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.routine{
-    display: flex;
-    align-items: center;
-    margin: 10px;
-}
-
-.routine-icon{
-    background-color: #1A1A1A;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-}
-
-.routine-content{
-    width: 250px;
-    margin-right: 20px;
-    font-weight: bold;
-}
-
-.routine-content span{
-    font-size: 1rem;
-}
-
-.add-routine {
-    opacity: 0.5;
-}
-
-.free-workout-btn{
-    background-color: #EDEDED;
-    height: 70px;
-    width: 300px;
-    border-radius: 30px;
-    margin: 12px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #1A1A1A;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-.free-workout-btn i{
-    margin-right: 5px;
-}
 
 .status-header{
     height: 45px;
@@ -102,15 +45,6 @@ body {
     font-size: 1.5rem;
 }
 
-.routine-title{
-    font-size: 35px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .bottom-btn{
     position: absolute;
     bottom: 80px;
@@ -118,68 +52,4 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.exercise-list{
-    height: 65vh;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.exercise{
-    width: 340px;
-    height:75px;
-    display: flex;
-    align-items: center;
-    justify-content:baseline;
-}
-
-.exercise-icon{
-    width: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-}
-
-.exercise-content{
-    width: 270px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.exercise-label{
-    width: 90%;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-}
-
-.add-exercise{
-    font-size: 1.1rem;
-}
-
-.exercise-btn-wrapper{
-    position: absolute;
-    width:340px;
-    bottom: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.exercise-btn{
-    background-color: #EDEDED;
-    height: 70px;
-    width: 300px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #1A1A1A;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
