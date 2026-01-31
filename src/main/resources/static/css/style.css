@@ -3,6 +3,7 @@
 @import "exercise.css";
 @import "check-box.css";
 @import "update.css";
+@import "set-log.css";
 
 * {
     margin: 0;

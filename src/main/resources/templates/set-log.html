@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berserk WorkOut</title>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+</head>
+<body>
+    <section class="app-container">
+        <div class="status-header">
+            <a href="routine-detail.html">
+                <div class="back-btn">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+            </a>
+        </div>
+        <div class="routine-title">
+            <span>푸시 업</span>
+        </div>
+        <div class="routine-list">
+            <form action="" class="set-form">
+                <span>1</span>
+                <input type="number" class="set-number" id="set-weight">
+                <label for="set-weight">kg</label>
+                <input type="number" class="set-number" id="set-reps">
+                <label for="set-reps">회</label>
+                <input type="text" class="set-text">
+                <button class="set-save-btn"><i class="fa-solid fa-check"></i></button>
+            </form>
+            <div class="set-btns">
+                <form action="">
+                    <button class="set-btn set-delete-btn">세트 삭제</button>
+                </form>
+                <form action="">
+                    <button class="set-btn set-add-btn">세트 추가</button>
+                </form>
+            </div>
+        </div>
+        <div class="set-shift-box">
+            <a href="">
+                <div class="set-shift set-before">
+                    <span>이전 운동</span>
+                </div>
+            </a>
+            <a href="">
+                <div class="set-shift set-after">
+                    <span>다음 운동</span>
+                </div>
+            </a>
+        </div>
+
+    </section>
+<script src="https://kit.fontawesome.com/c0a4d90d56.js" crossorigin="anonymous"></script>
+</body>
+</html>
