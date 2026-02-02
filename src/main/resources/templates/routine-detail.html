@@ -1,38 +1,34 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berserk WorkOut</title>
-    <link rel="stylesheet" href="../static/css/style.css"/>
-</head>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::.app-container})}">
 <body>
     <section class="app-container">
 
         <div class="status-header">
-            <a href="index.html">
+            <a th:href="@{/session}">
                 <div class="back-btn">
                     <i class="fa-solid fa-angle-left"></i>
                 </div>
             </a>
 
-            <a href="routine-update.html">
+            <a th:href="routine-update.html">
                 <div>
                     <i class="fa-solid fa-gear"></i>
                 </div>
             </a>
         </div>
         <div class="routine-title">
-            <span>새 루틴</span>
+            <span th:text="${workoutSession.title}">새 루틴</span>
         </div>
         <div class="routine-list">
-            <div class="routine">
+            <div class="routine" th:each="sessionOrder:${sessionOrders}">
                 <div class="routine-icon">
                     <i class="fa-solid fa-dumbbell"></i>
                 </div>
-                <a href="set-log.html">
+                <a th:href="@{{id}/session-order(id=${workoutSession.id},exerciseNo=${sessionOrder.exerciseNo})}">
                     <div class="routine-content">
-                        <span>푸시 업</span>
+                        <span th:text="${sessionOrder.exerciseName}">푸시 업</span>
                     </div>
                 </a>
                 <div>
@@ -61,6 +57,5 @@
             </a>
         </div>
     </section>
-<script src="https://kit.fontawesome.com/c0a4d90d56.js" crossorigin="anonymous"></script>
 </body>
 </html>
