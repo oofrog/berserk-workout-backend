@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berserk WorkOut</title>
-    <link rel="stylesheet" href="../static/css/style.css"/>
-</head>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::.app-container})}">
 <body>
     <section class="app-container">
         <div class="status-header">
-            <a href="routine-detail.html">
+            <a th:href="@{/session/{id}(id=${sessionOrder.workoutSessionId})}">
                 <div class="back-btn">
                     <i class="fa-solid fa-angle-left"></i>
                 </div>
             </a>
         </div>
         <div class="routine-title">
-            <span>푸시 업</span>
+            <span th:text="${sessionOrder.exerciseName}">푸시 업</span>
         </div>
         <div class="routine-list">
-            <form action="" class="set-form">
-                <span>1</span>
-                <input type="number" class="set-number" id="set-weight">
-                <label for="set-weight">kg</label>
-                <input type="number" class="set-number" id="set-reps">
-                <label for="set-reps">회</label>
-                <input type="text" class="set-text">
+            <form action="" class="set-form" th:each="setLog:${sessionOrder.setLogs}">
+                <span th:text="${setLog.setNo}">1</span>
+                <input type="number" class="set-number" th:id="|set-weight-${setLog.id}|" th:value="${setLog.weight}">
+                <label th:for="|set-weight-${setLog.id}|">kg</label>
+                <input type="number" class="set-number" th:id="|set-reps-${setLog.id}|" th:value="${setLog.reps}">
+                <label th:for="|set-reps-${setLog.id}|">회</label>
+                <input type="text" class="set-text" th:id="|set-text-${setLog.id}|" th:value="${setLog.complete}">
                 <button class="set-save-btn"><i class="fa-solid fa-check"></i></button>
             </form>
             <div class="set-btns">
@@ -51,6 +47,5 @@
         </div>
 
     </section>
-<script src="https://kit.fontawesome.com/c0a4d90d56.js" crossorigin="anonymous"></script>
 </body>
 </html>
