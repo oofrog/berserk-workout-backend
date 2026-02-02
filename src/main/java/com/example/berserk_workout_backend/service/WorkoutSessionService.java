@@ -9,6 +9,7 @@ import com.example.berserk_workout_backend.model.WorkoutSession;
 import com.example.berserk_workout_backend.repository.ExerciseRepository;
 import com.example.berserk_workout_backend.repository.SessionOrderRepository;
 import com.example.berserk_workout_backend.repository.WorkoutSessionRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,19 @@ public class WorkoutSessionService {
 
         workoutSessionRepository.save(workoutSession);
         return mapToSessionDto(workoutSession);
+    }
+
+    public WorkoutSessionDto updateTitle(Long id,String title){
+
+        WorkoutSession workoutSession = workoutSessionRepository.findById(id).orElseThrow();
+        workoutSession.setTitle(title);
+        workoutSessionRepository.save(workoutSession);
+        return mapToSessionDto(workoutSession);
+    }
+
+    @Transactional
+    public void delete(Long id){
+        sessionOrderRepository.deleteAllByWorkoutSessionId(id);
+        workoutSessionRepository.deleteById(id);
     }
 }

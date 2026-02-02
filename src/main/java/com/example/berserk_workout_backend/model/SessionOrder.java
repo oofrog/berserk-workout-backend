@@ -29,7 +29,7 @@ public class SessionOrder {
     @JoinColumn(name="exercise_id")
     private Exercise exercise;
 
-    @OneToMany(mappedBy = "sessionOrder")
+    @OneToMany(mappedBy = "sessionOrder",cascade = CascadeType.REMOVE,orphanRemoval = true, fetch = FetchType.LAZY)
     private List<SetLog> setLogs = new ArrayList<>();
 
 

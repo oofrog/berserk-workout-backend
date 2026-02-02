@@ -85,5 +85,18 @@ public class WorkoutSessionController {
         return "routine-update";
     }
 
+    @PostMapping("/update")
+    public String updateSession(@RequestParam("id")Long workoutSessionId,@RequestParam(required = false) String title){
+        workoutSessionService.updateTitle(workoutSessionId,title);
+
+        return "redirect:/session/"+workoutSessionId;
+    }
+
+    @PostMapping("/delete")
+    public String deleteSession(@RequestParam("id")Long workoutSessionId){
+        workoutSessionService.delete(workoutSessionId);
+        return "redirect:/session";
+    }
+
 
 }

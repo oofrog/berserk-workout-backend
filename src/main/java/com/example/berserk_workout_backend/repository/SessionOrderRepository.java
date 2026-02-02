@@ -24,4 +24,6 @@ public interface SessionOrderRepository extends JpaRepository<SessionOrder, Long
     Integer findMaxExerciseNoByWorkoutSession(WorkoutSession workoutSession);
 
     SessionOrder findByWorkoutSessionAndExerciseNo(WorkoutSession workoutSession, Integer exerciseNo);
+
+    void deleteAllByWorkoutSessionId(Long workoutSessionId);
 }

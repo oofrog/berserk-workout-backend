@@ -12,12 +12,13 @@
             </a>
         </div>
         <div class="update-box">
-            <form action="index.html" class="update-form">
-                <input type="text" th:value="${workoutSession.title}" class="update-input">
-                <button class="update-btn">수정</button>
+            <form th:action="@{/session/update(id=${workoutSession.id})}" th:method="post" class="update-form">
+                <input type="text" class="update-input" name="title"
+                       th:value="${workoutSession.title}">
+                <button type="submit" class="update-btn">수정</button>
             </form>
-            <form action="index.html" class="update-form">
-                <button class="delete-btn">루틴 삭제</button>
+            <form th:action="@{/session/delete(id=${workoutSession.id})}" th:method="post" class="update-form">
+                <button type="submit" class="delete-btn">루틴 삭제</button>
             </form>
         </div>
     </section>
