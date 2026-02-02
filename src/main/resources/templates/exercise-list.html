@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berserk WorkOut</title>
-    <link rel="stylesheet" href="../static/css/style.css"/>
-</head>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::.app-container})}">
 <body>
     <section class="app-container">
         <div class="status-header">
-            <a href="index.html">
+            <a th:href="@{/session}">
                 <div class="back-btn">
                     <i class="fa-solid fa-angle-left"></i>
                 </div>
@@ -23,15 +19,19 @@
             </a>
         </div>
 
-        <form action="routine-detail.html">
+        <form th:action="@{/session/add}" th:method="post">
             <div class="exercise-list">
-                <div class="exercise">
+                <div class="exercise" th:each="exercise:${exerciseList}">
                     <div class="exercise-icon">
                         <i class="fa-solid fa-dumbbell"></i>
                     </div>
                     <div class="exercise-content">
-                        <label for="check2" class="exercise-label">랫 풀 다운</label>
-                        <input type="checkbox" id="check2" class="exercise-checkbox">
+                        <label th:for="|check-${exercise.id}|" class="exercise-label" th:text="${exercise.name}">랫 풀 다운</label>
+                        <input type="checkbox"
+                               class="exercise-checkbox"
+                               name="exerciseIds"
+                               th:id="|check-${exercise.id}|"
+                               th:value="${exercise.id}">
                         <i class="fa-solid fa-check exercise-check"></i>
                     </div>
                 </div>
