@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berserk WorkOut</title>
-    <link rel="stylesheet" href="../static/css/style.css"/>
-</head>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::.app-container})}">
 <body>
     <section class="app-container">
         <div class="status-header">
-            <a href="index.html">
+            <a th:href="@{/session/add}">
                 <div class="back-btn">
                     <i class="fa-solid fa-angle-left"></i>
                 </div>
             </a>
         </div>
         <div class="update-box">
-            <form action="exercise-list.html" class="update-form">
-                <input type="text" value="운동 이름" class="update-input">
-                <button class="update-btn">만들기</button>
+            <form th:action="@{/exercise/add}" th:method="post" class="update-form">
+                <input type="text" value="운동 이름" class="update-input" name="exerciseName">
+                <button type="submit" class="update-btn">만들기</button>
             </form>
         </div>
     </section>
 
-<script src="https://kit.fontawesome.com/c0a4d90d56.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -24,4 +24,11 @@ public class ExerciseService {
         List<Exercise> exercises = exerciseRepository.findAll();
         return exercises.stream().map(this::mapToExerciseDto).toList();
     }
+
+    public ExerciseDto create(String name){
+        Exercise exercise = Exercise.builder()
+                .name(name)
+                .build();
+        return mapToExerciseDto(exerciseRepository.save(exercise));
+    }
 }
