@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berserk WorkOut</title>
-    <link rel="stylesheet" href="../static/css/style.css"/>
-</head>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base-layout::layout(~{::.app-container})}">
 <body>
     <section class="app-container">
         <div class="status-header">
         </div>
 
         <div class="routine-list">
-            <div class="routine">
+            <div class="routine" th:each="workoutSession:${workoutSessions}">
                 <div class="routine-icon">
                     <i class="fa-solid fa-dumbbell"></i>
                 </div>
-                <a href="routine-detail.html">
+                <a th:href="@{session/{id}(id=${workoutSession.id})}">
                     <div class="routine-content">
-                        <span>새 루틴</span>
+                        <span th:text="${workoutSession.title}">새 루틴</span>
                     </div>
                 </a>
-                <a href="routine-update.html">
+                <a th:href="@{session/update(id=${workoutSession.id})}">
                     <div>
                         <i class="fa-solid fa-gear"></i>
                     </div>
@@ -32,7 +28,7 @@
                 <div class="routine-icon">
                     <i class="fa-solid fa-plus"></i>
                 </div>  
-                <a href="exercise-list.html">
+                <a th:href="@{session/add}">
                     <div class="routine-content">
                         <span>루틴 만들기</span>
                     </div>
@@ -46,6 +42,5 @@
             </a>
         </div>
     </section>
-<script src="https://kit.fontawesome.com/c0a4d90d56.js" crossorigin="anonymous"></script>
 </body>
 </html>

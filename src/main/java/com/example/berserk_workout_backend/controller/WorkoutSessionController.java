@@ -28,14 +28,14 @@ public class WorkoutSessionController {
     public String getWorkOutSession(Model model) {
         List<WorkoutSessionDto> workoutSessions = workoutSessionService.findAll();
         model.addAttribute("workoutSessions", workoutSessions);
-        return "session-list";
+        return "index";
     }
 
     @GetMapping("/{id}")
     public String getSessionDetailsById(@PathVariable Long id, Model model) {
         model.addAttribute("workoutSession", workoutSessionService.findById(id));
         model.addAttribute("sessionOrders", sessionOrderService.findAllBySessionId(id));
-        return "session-details";
+        return "routine-detail";
     }
 
     @GetMapping("/{id}/session-order")
@@ -49,7 +49,7 @@ public class WorkoutSessionController {
         model.addAttribute("sessionOrder", sessionOrder);
         model.addAttribute("existNext",existNext);
 
-        return "session-order-details";
+        return "set-log";
     }
 
 
@@ -64,7 +64,7 @@ public class WorkoutSessionController {
             model.addAttribute("type", "patch");
         }
 
-        return "session-add";
+        return "exercise-list";
     }
 
     @PostMapping("/add")
@@ -76,6 +76,14 @@ public class WorkoutSessionController {
         return "redirect:/session/"+workoutSessionId;
     }
 
+    @GetMapping("/update")
+    public String getSessionUpdate(@RequestParam("id") Long workoutSessionId, Model model) {
+
+        WorkoutSessionDto workoutSessionDto = workoutSessionService.findById(workoutSessionId);
+        model.addAttribute("workoutSession", workoutSessionDto);
+
+        return "routine-update";
+    }
 
 
 }
