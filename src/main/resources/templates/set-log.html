@@ -15,33 +15,51 @@
             <span th:text="${sessionOrder.exerciseName}">푸시 업</span>
         </div>
         <div class="routine-list">
-            <form action="" class="set-form" th:each="setLog:${sessionOrder.setLogs}">
+            <form th:action="@{/set-log/save}" th:method="post" class="set-form" th:each="setLog : ${sessionOrder.setLogs}">
+                <input type="hidden" name="id" th:value="${setLog.id}">
+
                 <span th:text="${setLog.setNo}">1</span>
-                <input type="number" class="set-number" th:id="|set-weight-${setLog.id}|" th:value="${setLog.weight}">
-                <label th:for="|set-weight-${setLog.id}|">kg</label>
-                <input type="number" class="set-number" th:id="|set-reps-${setLog.id}|" th:value="${setLog.reps}">
-                <label th:for="|set-reps-${setLog.id}|">회</label>
-                <input type="text" class="set-text" th:id="|set-text-${setLog.id}|" th:value="${setLog.complete}">
-                <button class="set-save-btn"><i class="fa-solid fa-check"></i></button>
+                <input type="hidden" name="setNo" th:value="${setLog.setNo}">
+
+                <input type="number" name="weight" class="set-number"
+                       th:id="|weight-${setLog.id}|" th:value="${setLog.weight}">
+                <label th:for="|weight-${setLog.id}|">kg</label>
+
+                <input type="number" name="reps" class="set-number"
+                       th:id="|reps-${setLog.id}|" th:value="${setLog.reps}">
+                <label th:for="|reps-${setLog.id}|">회</label>
+
+                <input type="text" name="complete" class="set-text"
+                       th:id="|complete-${setLog.id}|" th:value="${setLog.complete}">
+
+                <button type="submit" class="set-save-btn"><i class="fa-solid fa-check"></i></button>
             </form>
             <div class="set-btns">
-                <form action="">
+                <form th:action="@{/set-log/delete(sessionOrderId=${sessionOrder.id})}" th:method="post">
                     <button class="set-btn set-delete-btn">세트 삭제</button>
                 </form>
-                <form action="">
+                <form th:action="@{/set-log/add(sessionOrderId=${sessionOrder.id})}" th:method="post">
                     <button class="set-btn set-add-btn">세트 추가</button>
                 </form>
             </div>
         </div>
         <div class="set-shift-box">
-            <a href="">
+            <a th:if="${sessionOrder.exerciseNo !=1}"
+               th:href="@{''(exerciseNo=${sessionOrder.exerciseNo -1})}">
                 <div class="set-shift set-before">
                     <span>이전 운동</span>
                 </div>
             </a>
-            <a href="">
+            <a th:if="${existNext}"
+               th:href="@{''(exerciseNo=${sessionOrder.exerciseNo +1})}">
                 <div class="set-shift set-after">
                     <span>다음 운동</span>
+                </div>
+            </a>
+            <a th:if="${existNext==false}"
+               th:href="@{/session/{id}(id=${sessionOrder.workoutSessionId})}">
+                <div class="set-shift set-after">
+                    <span>운동 완료</span>
                 </div>
             </a>
         </div>
