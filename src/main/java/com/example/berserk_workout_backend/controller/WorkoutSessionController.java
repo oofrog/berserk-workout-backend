@@ -2,11 +2,9 @@ package com.example.berserk_workout_backend.controller;
 
 import com.example.berserk_workout_backend.dto.SessionOrderDto;
 import com.example.berserk_workout_backend.dto.WorkoutSessionDto;
-import com.example.berserk_workout_backend.model.WorkoutSession;
 import com.example.berserk_workout_backend.service.ExerciseService;
 import com.example.berserk_workout_backend.service.SessionOrderService;
 import com.example.berserk_workout_backend.service.WorkoutSessionService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -59,16 +57,25 @@ public class WorkoutSessionController {
         model.addAttribute("exerciseList",exerciseService.findAll());
 
         if (id == null) {
-            model.addAttribute("type", "new");
+            model.addAttribute("isNew", true);
+            return "exercise-list";
         } else{
-            model.addAttribute("type", "patch");
+            model.addAttribute("workoutSession", workoutSessionService.findById(id));
+            model.addAttribute("isNew", false);
+            return "exercise-list2";
         }
 
-        return "exercise-list";
     }
 
     @PostMapping("/add")
-    public String addWorkoutSession(@RequestParam(required = false) List<Long> exerciseIds){
+    public String addWorkoutSession(Long id,@RequestParam(required = false) List<Long> exerciseIds){
+        workoutSessionService.addExercise(id,exerciseIds);
+
+        return "redirect:/session/"+id;
+    }
+
+    @PostMapping("/create")
+    public String createWorkoutSession(@RequestParam(required = false) List<Long> exerciseIds){
 
         WorkoutSessionDto workoutSessionDto = workoutSessionService.create(exerciseIds);
         Long workoutSessionId = workoutSessionDto.getId();

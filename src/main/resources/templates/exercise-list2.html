@@ -11,7 +11,7 @@
                 </div>
             </a>
 
-            <a th:href="@{/exercise/add}">
+            <a th:href="@{/exercise/add(id=${workoutSession.id})}">
                 <div class="add-exercise">
                     <i class="fa-solid fa-plus"></i>
                     <span>운동만들기</span>
@@ -19,7 +19,7 @@
             </a>
         </div>
 
-        <form th:action="@{/session/create}" th:method="post">
+        <form th:action="@{/session/add(id=${workoutSession.id})}" th:method="post">
             <div class="exercise-list">
                 <div class="exercise" th:each="exercise:${exerciseList}">
                     <div class="exercise-icon">
@@ -38,11 +38,10 @@
             </div>
             <div class="exercise-btn-wrapper">
                 <button class="exercise-btn">
-                    루틴 만들기
+                    운동 추가
                 </button>
             </div>
         </form>
-
     </section>
 <script src="https://kit.fontawesome.com/c0a4d90d56.js" crossorigin="anonymous"></script>
 </body>

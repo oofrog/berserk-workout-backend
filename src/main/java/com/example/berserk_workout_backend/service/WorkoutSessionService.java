@@ -1,10 +1,8 @@
 package com.example.berserk_workout_backend.service;
 
 import com.example.berserk_workout_backend.dto.SessionOrderDto;
-import com.example.berserk_workout_backend.dto.SetLogDto;
 import com.example.berserk_workout_backend.dto.WorkoutSessionDto;
 import com.example.berserk_workout_backend.model.Exercise;
-import com.example.berserk_workout_backend.model.SessionOrder;
 import com.example.berserk_workout_backend.model.WorkoutSession;
 import com.example.berserk_workout_backend.repository.ExerciseRepository;
 import com.example.berserk_workout_backend.repository.SessionOrderRepository;
@@ -54,12 +52,25 @@ public class WorkoutSessionService {
         return mapToSessionDto(workoutSession);
     }
 
-    public WorkoutSessionDto updateTitle(Long id,String title){
+    public WorkoutSessionDto addExercise(Long workoutSessionId, List<Long> exerciseIds) {
+        WorkoutSession workoutSession = workoutSessionRepository.findById(workoutSessionId).orElseThrow();
+
+        for (Long exerciseId : exerciseIds) {
+            Exercise exercise = exerciseRepository.findById(exerciseId).orElseThrow();
+            SessionOrderDto sessionOrderDto = sessionOrderService.create(workoutSession.getId(), exercise.getId());
+            setLogService.create3x10x10(sessionOrderDto.getId());
+        }
+
+        workoutSessionRepository.save(workoutSession);
+        return mapToSessionDto(workoutSession);
+    }
+
+
+    public void updateTitle(Long id, String title){
 
         WorkoutSession workoutSession = workoutSessionRepository.findById(id).orElseThrow();
         workoutSession.setTitle(title);
         workoutSessionRepository.save(workoutSession);
-        return mapToSessionDto(workoutSession);
     }
 
     @Transactional

@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="update-box">
-            <form th:action="@{/exercise/add}" th:method="post" class="update-form">
+            <form th:action="@{/exercise/add(id=${workoutSessionId})}" th:method="post" class="update-form">
                 <input type="text" value="운동 이름" class="update-input" name="exerciseName">
                 <button type="submit" class="update-btn">만들기</button>
             </form>
